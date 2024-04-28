@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OkCupid Extended
 // @namespace    https://www.okcupid.com/
-// @version      0.1
+// @version      0.11
 // @description  Extending OkCupid with much-needed features!
 // @author       ZeroByter
 // @match        https://www.okcupid.com/home
@@ -28,10 +28,10 @@ const handleToggleCollapseContainer = (container) => {
 }
 
 /**
- * 
- * @param {HTMLDivElement} container 
- * @param {string} string 
- * @param {string} tooltip 
+ *
+ * @param {HTMLDivElement} container
+ * @param {string} string
+ * @param {string} tooltip
  */
 const generateSectionHeader = (container, string, tooltip) => {
   const headerContainer = document.createElement("button")
@@ -193,7 +193,7 @@ const generateSectionHeader = (container, string, tooltip) => {
       }
 
       const filteredPastUsers = Object.entries(oldMatchesData).filter(([id, data]) => {
-        return id.toString().includes(newValue) || data.location.includes(newValue) || data.name.includes(newValue)
+        return id.toString().includes(newValue) || data.location?.toLowerCase().includes(newValue) || data.name?.toLowerCase().includes(newValue)
       })
       filteredPastUsers.sort(([aid, a], [bid, b]) => {
         return b.matchPercent - a.matchPercent
